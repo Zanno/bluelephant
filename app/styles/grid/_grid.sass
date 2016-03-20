@@ -2,7 +2,7 @@
  * GRID STRUCTURE
  */
 
-// IMPORT SUSY HERE
+// SUSY DEFINITION HERE
 
 // CONTENT
 .page_wrapper
@@ -14,34 +14,40 @@
     > .content
       width: 100%
 
-// ONE COLUMN LEFT
-.column_left_grid
+// SIDEBAR GENERAL STYLE
+.sidebar_left_grid,
+.sidebar_right_grid
   .page_wrapper
     > .content
-      width: 100%
-      transition: all .4s ease-in-out
       +breakpoint($tablet)
         width: 70%
-        float: right
-        transition: all .4s ease-in-out
-    > .aside
-      width: 100%
-      transition: all .4s ease-in-out
+    > .sidebar
       +breakpoint($tablet)
         width: 25%
-        float: left
-        margin-right: 5%
-        transition: all .4s ease-in-out
 
-// ONE COLUMN RIGHT
-.column_right_grid
+// ONE SIDEBAR LEFT
+.sidebar_left_grid
   .page_wrapper
     > .content
-    > .aside
+      +breakpoint($tablet)
+        float: right
+    > .sidebar
+      +breakpoint($tablet)
+        float: left
+
+// ONE SIDEBAR RIGHT
+.sidebar_right_grid
+  .page_wrapper
+    > .content
+      +breakpoint($tablet)
+        float: left
+    > .sidebar
+      +breakpoint($tablet)
+        float: left
 
 // TWO COLUMN
 .two_columns_grid
   .page_wrapper
     > .content
-    > .aside_left
-    > .aside_right
+    > .sidebar_left
+    > .sidebar_right
