@@ -1,2 +1,0 @@
-# bluelephant
-Testing project
