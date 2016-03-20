@@ -6,7 +6,6 @@
 
 // CONTENT
 .page_wrapper
-  width: 960px
   margin: 0 auto
 
 // CONTENT 100%
@@ -19,8 +18,14 @@
 .column_left_grid
   .page_wrapper
     > .content
+      +breakpoint($tablet)
+        width: 70%
+        float: right
     > .aside
-
+      +breakpoint($tablet)
+        width: 25%
+        float: left
+        margin-right: 5%
 // ONE COLUMN RIGHT
 .column_right_grid
   .page_wrapper

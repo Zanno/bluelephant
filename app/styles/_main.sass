@@ -13,6 +13,7 @@ body
 
 body
   font-size: 16px
+  position: relative
   font-family: arial
   line-height: 1.5em
 
@@ -24,8 +25,11 @@ body
 h1, h2, h3, h4, h5, h6
   text-transform: uppercase
 
+ul
+  @extend .hide_bullets
+
 p
-  margin-bottom: 1em
+  margin: 0 0 1em 0
 
 a
   color: $black
