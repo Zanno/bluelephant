@@ -6,25 +6,38 @@
 
 // CONTENT
 .page_content
-  //+container() sussyyyyy
+  width: 960px
+  margin: 0 auto
 
 // CONTENT 100%
 .full_page
   .page_content
-    > content
+    > .content
       width: 100%
 
 // ONE COLUMN LEFT
 .column_left
   .page_content
-    > content
+    > .content
+      width: 70%
+      float: right
+    > aside
+      width: 30%
+      float: left
+      margin-right: 10%
 
 // ONE COLUMN RIGHT
 .column_right
   .page_content
-    > content
+    > .content
+      width: 70%
+      float: left
+      margin-right: 10%
+    > aside
+      width: 30%
+      float: right
 
 // TWO COLUMN
 .two_columns
   .page_content
-    > content
+    > .content
