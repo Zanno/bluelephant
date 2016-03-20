@@ -5,39 +5,31 @@
 // IMPORT SUSY HERE
 
 // CONTENT
-.page_content
+.page_wrapper
   width: 960px
   margin: 0 auto
 
 // CONTENT 100%
-.full_page
-  .page_content
+.full_page_grid
+  .page_wrapper
     > .content
       width: 100%
 
 // ONE COLUMN LEFT
-.column_left
-  .page_content
+.column_left_grid
+  .page_wrapper
     > .content
-      width: 70%
-      float: right
-    > aside
-      width: 30%
-      float: left
-      margin-right: 10%
+    > .aside
 
 // ONE COLUMN RIGHT
-.column_right
-  .page_content
+.column_right_grid
+  .page_wrapper
     > .content
-      width: 70%
-      float: left
-      margin-right: 10%
-    > aside
-      width: 30%
-      float: right
+    > .aside
 
 // TWO COLUMN
-.two_columns
-  .page_content
+.two_columns_grid
+  .page_wrapper
     > .content
+    > .aside_left
+    > .aside_right
