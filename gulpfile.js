@@ -25,7 +25,7 @@ var gulp          = require('gulp'),
       .src('app/styles/app.sass')                              // Obtenemos la ruta del fichero principal de sass
       .pipe(convertSass().on('error', convertSass.logError))   // Convertimos el sass a css, si no hay error de sintaxis
       //.pipe(sourcemaps.init())                               // Minificamos ese fichero css y creamos a partir de él, el mapeo para obtener el desglose en el inspector de elementos.
-      //.pipe(minifyCss())
+      .pipe(minifyCss())
       //.pipe(sourcemaps.write('.'))
       .pipe(rename('bluelephant.css'))                          // Renombramos el fichero
       .pipe(gulp.dest('assets/css'));                          // Elegimos la ruta de salida para el fichero css minificado.
