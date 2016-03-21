@@ -1,53 +1,58 @@
 /**
  * GRID STRUCTURE
+ * IMPORTED DEPENDENCIES: SUSY AND BREAKPOINT
  */
 
-// SUSY DEFINITION HERE
+// SUSY -> http://susy.oddbird.net/
+// COMPASS BREAKPOINT -> http://breakpoint-sass.com/
+@import ../../bower_components/susy/sass/susy
+@import ../../bower_components/compass-breakpoint/stylesheets/breakpoint
+
+// SUSY DEFINITION
+$susy: (container: 960px, columns: 12, gutters: .25, math: fluid, output: float, gutter-position: outside, global-box-sizing: content-box,)
 
 // CONTENT
-.page_wrapper
-  margin: 0 auto
+.wrapper
+  +container
 
 // CONTENT 100%
 .full_page_grid
-  .page_wrapper
+  .wrapper
     > .content
-      width: 100%
-
-// SIDEBAR GENERAL STYLE
-.sidebar_left_grid,
-.sidebar_right_grid
-  .page_wrapper
-    > .content
-      +breakpoint($tablet)
-        width: 70%
-    > .sidebar
-      +breakpoint($tablet)
-        width: 25%
+      +span(12 of 12)
 
 // ONE SIDEBAR LEFT
 .sidebar_left_grid
-  .page_wrapper
+  .wrapper
     > .content
       +breakpoint($tablet)
-        float: right
+        +span(9 of 12 last)
     > .sidebar
       +breakpoint($tablet)
-        float: left
+        +span(3 of 12 first)
 
 // ONE SIDEBAR RIGHT
 .sidebar_right_grid
-  .page_wrapper
+  .wrapper
     > .content
       +breakpoint($tablet)
-        float: left
+        +span(9 of 12 first)
     > .sidebar
       +breakpoint($tablet)
-        float: left
+        +span(3 of 12 last)
 
-// TWO COLUMN
-.two_columns_grid
-  .page_wrapper
+// TWO SIDEBARS
+.two_sidebars_grid
+  .wrapper
     > .content
+      border: 1px solid green
+      +breakpoint($tablet)
+        +span(6 at 4 of 12 isolate)
     > .sidebar_left
+      border: 1px solid red
+      +breakpoint($tablet)
+        +span(3 of 12 first)
     > .sidebar_right
+      border: 1px solid cyan
+      +breakpoint($tablet)
+        +span(3 of 12 last)

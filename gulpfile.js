@@ -25,7 +25,7 @@ var gulp          = require('gulp'),
       .src('app/styles/app.sass')                              // Obtenemos la ruta del fichero principal de sass
       .pipe(convertSass().on('error', convertSass.logError))   // Convertimos el sass a css, si no hay error de sintaxis
       //.pipe(sourcemaps.init())                               // Minificamos ese fichero css y creamos a partir de él, el mapeo para obtener el desglose en el inspector de elementos.
-      .pipe(minifyCss())
+      //.pipe(minifyCss())
       //.pipe(sourcemaps.write('.'))
       .pipe(rename('bluelephant.css'))                          // Renombramos el fichero
       .pipe(gulp.dest('assets/css'));                          // Elegimos la ruta de salida para el fichero css minificado.
@@ -41,17 +41,13 @@ var gulp          = require('gulp'),
        .pipe(gulp.dest('assets/js'));     // Elegimos ruta de salida para el fichero
     });
 
+    // DEPLOY
+    gulp.task('deploy', ['styles', 'js']);
+
     // WATCHER
-    gulp.task('watch', function() {
+    gulp.task('watch', ['deploy'], function() {
       //liveReload.listen();
       gulp.watch('app/**/*.sass', ['deploy']);     // En cuanto cambie alguien fichero con extension Sass,  lanzamos la tarea "deploy"
       gulp.watch('app/**/*.js'  , ['deploy']);
       gulp.watch('app/**/*.html', ['deploy']);
     });
-
-    // DEPLOY
-    gulp.task('deploy', ['styles', 'js', 'watch']); // Compila el css, compila el js y lanza el observador. convirtiendose en un bucle.
-
-    // Deploy -> compila el css, compila el js y lanza el obervador
-    //  ^                                                   |
-    //  |___________________________________________________|
