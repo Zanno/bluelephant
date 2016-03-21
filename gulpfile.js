@@ -7,28 +7,24 @@
 // REQUIREMENTS PACKAGES
 var gulp          = require('gulp'),
     sassGlob      = require("gulp-sass-glob"),  // Nos permite usar asteriscos para importar de manera veloz todos los ficheros sass al main.sass: @import regions/**/*, Ventajas: cada vez que creemos un fichero nuevo, no tendremos que añadirlo manualmente al app.sass
-    convertSass   = require("gulp-sass"),       // Convierte sass a css.
-    minifyCss     = require("gulp-cssnano"),    // Minifica el css
+    convertSass   = require("gulp-sass"),       // Convierte sass a css en formato comprimido o sin comprimir ("Outputstyle" parameter)
     sourcemaps    = require("gulp-sourcemaps"), // Crea un mapeado del fichero css minificado para poder tener un seguimiento de los directorios desde el navegador.
     liveReload    = require('gulp-livereload'), // Recarga el navegador cuando se producen cambios en los ficheros indicados.
     rename        = require('gulp-rename'),     // Renombra ficheros
     concat        = require('gulp-concat'),     // Concatena ficheros
     minifyJs      = require('gulp-uglify');     // Minifica ficheros javascript
 
-    // TODO: COmo funciona el sourcemaps?
-
 // TASKS
 
     // COMPILE CSS
     gulp.task('styles', function () {
       return gulp
-      .src('app/styles/app.sass')                              // Obtenemos la ruta del fichero principal de sass
-      .pipe(convertSass().on('error', convertSass.logError))   // Convertimos el sass a css, si no hay error de sintaxis
-      //.pipe(sourcemaps.init())                               // Minificamos ese fichero css y creamos a partir de él, el mapeo para obtener el desglose en el inspector de elementos.
-      .pipe(minifyCss())
-      //.pipe(sourcemaps.write('.'))
-      .pipe(rename('bluelephant.css'))                          // Renombramos el fichero
-      .pipe(gulp.dest('assets/css'));                          // Elegimos la ruta de salida para el fichero css minificado.
+      .src('app/styles/app.sass')               // Obtenemos la ruta del fichero principal de sass
+      .pipe(convertSass({outputStyle: 'compressed'}).on('error', convertSass.logError))   // Convertimos el sass a css minificado, si no hay error de sintaxis
+      .pipe(sourcemaps.init())                  // Creamos a partir de él, el mapeo para obtener el desglose en el inspector de elementos.
+      .pipe(rename('bluelephant.css'))          // Renombramos el fichero
+      .pipe(sourcemaps.write('.'))
+      .pipe(gulp.dest('assets/css'));           // Elegimos la ruta de salida para el fichero css minificado.
     });
 
     // COMPILE JS
