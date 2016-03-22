@@ -9,10 +9,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^6.3.4",
     "bower": "^1.7.7",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-livereload": "^3.8.1",
+    "gulp-postcss": "^6.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.2.0",
     "gulp-sass-glob": "0.0.8",
