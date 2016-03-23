@@ -41,10 +41,10 @@ var gulp          = require('gulp'),
     });
 
     // DEPLOY
-    gulp.task('deploy', ['styles', 'js']);
+    gulp.task('deploy', ['styles', 'js']);      // Tarea que ejecuta la compilacion del css y del javascript
 
     // WATCHER
-    gulp.task('watch', ['deploy'], function() {
+    gulp.task('watch', ['deploy'], function() { // La tarea watch se encarga de lanzar primero la tarea deploy y luego observar cambios en los siguientes ficheros
       gulp.watch('app/**/*.sass', ['styles']);  // En cuanto cambie algun fichero con extension sass, lanzamos la tarea "styles"
       gulp.watch('app/**/*.js'  , ['js']);      // En cuanto cambie algun fichero con extension js, lanzamos la tarea "js"
       gulp.watch('app/**/*.html', ['deploy']);  // En cuanto cambie algun fichero con extension html, lanzamos la tarea "deploy"

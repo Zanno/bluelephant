@@ -3,3 +3,44 @@
  */
 
 header
+  +clearfix
+  height: 70px
+  padding: 0 1em
+  background-color: $white
+
+  // LOGO
+  .logobrand
+    margin-top: 10px
+    text-align: center
+    +span(2 of 12 first)
+    a
+      display: inline-block
+    img
+      width: 50px
+
+
+  // NAVIGATION
+  .main_navigation
+    +span(10 of 12 last)
+
+    // MENU
+    .menu
+      left: -100%
+      top: 70px
+      bottom: 0
+      opacity: 0
+      width: 100%
+      position: absolute
+      background-color: $gray-lightest
+      transition: left .6s ease-in-out .3s, opacity .3s ease-in-out
+      &.show
+        left: 0
+        opacity: 1
+        transition: left .6s ease-in-out, opacity .3s ease-in-out .3s
+      > li
+        display: block
+      > li > a
+        padding: 15px 10px
+
+    // SEARCHER
+    .searcher
