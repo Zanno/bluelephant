@@ -4,9 +4,10 @@
 
 header
   +clearfix
-  height: 70px
-  padding: 0 1em
+  height: 71px
   background-color: $white
+  border-bottom: 1px solid $gray-light
+  padding: 0 1em
 
   // LOGO
   .logobrand
@@ -25,22 +26,117 @@ header
 
     // MENU
     .menu
-      left: -100%
-      top: 70px
+      top: 71px
+      left: 0
       bottom: 0
-      opacity: 0
       width: 100%
+      padding: 1em
+      opacity: 0
       position: absolute
-      background-color: $gray-lightest
-      transition: left .6s ease-in-out .3s, opacity .3s ease-in-out
+      visibility: hidden
+      background-color: transparent
+      transition: opacity .2s ease-in-out
       &.show
-        left: 0
+        visibility: visible
+        background-color: $gray-lightest
         opacity: 1
-        transition: left .6s ease-in-out, opacity .3s ease-in-out .3s
-      > li
-        display: block
-      > li > a
-        padding: 15px 10px
+        transition: background-color .2s ease-in-out .1s
+        > li
+          top: 0
+          opacity: 1
+        > li:nth-child(1)
+          transition: opacity .5s ease-in-out .2s, top .4s ease-in-out .1s
+        > li:nth-child(2)
+          transition: opacity .5s ease-in-out .4s, top .4s ease-in-out .3s
+        > li:nth-child(3)
+          transition: opacity .5s ease-in-out .6s, top .4s ease-in-out .5s
+        > li:nth-child(4)
+          transition: opacity .5s ease-in-out .8s, top .4s ease-in-out .7s
+        > li:nth-child(5)
+          transition: opacity .5s ease-in-out 1s, top .4s ease-in-out .9s
+      +breakpoint($tablet)
+        width: 85%
+        opacity: 1
+        padding: 0
+        float: left
+        position: static
+        visibility: visible
+        background-color: $white
+
+
+    .menu  > li
+      top: 20px
+      opacity: 0
+      display: block
+      margin-bottom: .5em
+      position: relative
+      +breakpoint($tablet)
+        top: 0
+        opacity: 1
+        margin-bottom: 0
+        display: inline-block
+
+    .menu > li > a
+      padding: 9px
+      color: $black
+      display: block
+      font-size: .8em
+      font-weight: 600
+      background-color: $white
+      text-transform: uppercase
+      transition: all .2s ease-in-out
+      border-left: 3px solid $gray-light
+      +breakpoint($tablet)
+        border-left: 0
+        padding: 22.7px 16px
+        display: inline-block
+      &:hover
+        border-left: 3px solid $turquoise
+        transition: all .2s ease-in-out
+        +breakpoint($tablet)
+          border-left: 0
+          background-color: $gray-lightest
 
     // SEARCHER
     .searcher
+      float: right
+      cursor: pointer
+      padding: 22.7px 27px
+      &:hover
+        background-color: $gray-lightest
+
+    // MOBILE MENU BARS
+    //.mobile_menu_bars
+      float: right
+      cursor: pointer
+      padding: 22.7px 27px
+      &:hover
+        background-color: $gray-lightest
+      +breakpoint($tablet)
+        display: none
+
+    .mobile_menu_bars
+      float: right
+      height: 71px
+      display: flex
+      padding: 0 27px
+      align-items: center
+      .circle,
+      .circle:before,
+      .circle:after
+        width: 10px
+        height: 10px
+        display: block
+        border-radius: 50%
+        border: 2px solid $black
+      .circle:after,
+      .circle:before
+        content: ""
+        position: relative
+      .circle:before
+        top: -5px
+      .circle:after
+        top: 5px
+
+
+// TODO: Probar la maquetación del header con altura fija en los elementos internos y aplicandole el vertical align de FLEXBOX

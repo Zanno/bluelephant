@@ -1,1 +1,1 @@
-$(".main_navigation").click(function(){$(".menu").toggleClass("show")});
+$(".mobile_menu_bars").click(function(){$(".menu").toggleClass("show")});
